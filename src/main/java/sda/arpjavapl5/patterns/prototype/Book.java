@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Book implements BookClonable{
+public class Book implements BookClonable, Cloneable<Book>{
     String author;
     String title;
     String id;
@@ -20,7 +20,7 @@ public class Book implements BookClonable{
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Book clone() {
         return Book.builder()
                 .author(this.author)
                 .title(this.title)

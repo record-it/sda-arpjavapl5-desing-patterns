@@ -1,5 +1,7 @@
 package sda.arpjavapl5.patterns.prototype;
 
+import sda.arpjavapl5.patterns.factory_method.EmailMessage;
+
 public class PrototypeDemo {
     public static void main(String[] args) throws CloneNotSupportedException {
         Book book = Book.builder()
@@ -13,7 +15,5 @@ public class PrototypeDemo {
         System.out.println(book.cloneWithId("456"));
         System.out.println("Klon 2");
         System.out.println(book.clone());
-
-
     }
 }
