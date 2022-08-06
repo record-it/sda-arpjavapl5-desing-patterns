@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FactoryMethodDemo {
     private static final EnumInputSingleton input = EnumInputSingleton.INSTANCE;
-
+    private static MessageCreator messageCreator;
     public static void main(String[] args) {
         List<Message> messages = new ArrayList<>();
         System.out.println("Co chcesz wysłać?");
@@ -20,17 +20,26 @@ public class FactoryMethodDemo {
             case 1:
                 System.out.println("Wpisz adres docelowy");
                 String to = input.getScanner().nextLine();
-                MessageCreator emailCreator = new EmailMessageCreator(
+                messageCreator = new EmailMessageCreator(
                         EmailMessage.builder()
                                 .to(to)
                                 .build()
                 );
-                messages.add(emailCreator.create());
                 break;
             case 2:
-
+                System.out.println("Wpisz numer telefonu");
+                String phone = input.getScanner().nextLine();
+                System.out.println("Wpisz treść");
+                String content = input.getScanner().nextLine();
+                messageCreator = new SMSMessageCreator(
+                        content,
+                        phone
+                );
                 break;
-
+        }
+        if (messageCreator != null) {
+            messages.add(messageCreator.create());
+            System.out.println(messages);
         }
 
     }
