@@ -17,7 +17,6 @@ public class CollectionIteratorDemo {
             System.out.println(name);
         }
 
-
         for(Iterator<String> i = names.iterator(); i.hasNext();){
             String name = i.next();
             System.out.println(name);
