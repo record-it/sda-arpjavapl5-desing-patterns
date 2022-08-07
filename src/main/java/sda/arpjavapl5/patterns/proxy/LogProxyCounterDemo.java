@@ -1,7 +1,7 @@
 package sda.arpjavapl5.patterns.proxy;
 
 public class LogProxyCounterDemo {
-    static boolean LOG_COUNTER = true;
+    static boolean LOG_COUNTER = false;
     static Incrementable getCounter(){
         if (LOG_COUNTER){
             return new LogProxyCounter();
