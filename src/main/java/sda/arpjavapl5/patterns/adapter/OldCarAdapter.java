@@ -8,14 +8,14 @@ public class OldCarAdapter implements Drive{
 
     @Override
     public void drive(double speed, int time) {
-        car.start = false;
-        car.speed = speed;
-        car.start = true;
+        car.setStart(false);
+        car.setSpeed(speed);
+        car.setStart(true);
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        car.start = false;
+        car.setStart(false);
     }
 }
